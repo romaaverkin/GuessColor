@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GuessColor</string>
+    <string name="childrens_mode">Детский</string>
+    <string name="adult_mode">Взрослый</string>
+    <string name="question">Какой это цвет?</string>
+    <string name="question_colorRed">Красный</string>
+    <string name="question_colorGreen">Зеленый</string>
+    <string name="question_colorBlue">Синий</string>
+    <string name="question_colorYellow">Желтый</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.bignerdranch.android.guesscolor.ChildrenActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:text="@string/question"/>
+
+    <TextView
+        android:id="@+id/color_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorBlue"
+        android:paddingBottom="25dp"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:paddingTop="25dp"
+        android:textColor="@color/colorWhite"
+        tools:text="#0000FF"/>
+
+    <Button
+        android:id="@+id/first_answer_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question_colorRed"/>
+
+    <Button
+        android:id="@+id/second_answer_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question_colorGreen"/>
+
+    <Button
+        android:id="@+id/three_answer_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question_colorBlue"/>
+
+    <Button
+        android:id="@+id/fourth_answer_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Желтый"/>
+</LinearLayout>
