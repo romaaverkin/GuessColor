@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">GuessColor</string>
+    <string name="select_mode">Выбери режим</string>
     <string name="childrens_mode">Детский</string>
     <string name="adult_mode">Взрослый</string>
     <string name="question">Какой это цвет?</string>
