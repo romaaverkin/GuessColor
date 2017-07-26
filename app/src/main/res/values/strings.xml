@@ -8,4 +8,11 @@
     <string name="question_colorGreen">Зеленый</string>
     <string name="question_colorBlue">Синий</string>
     <string name="question_colorYellow">Желтый</string>
+    <string name="question_colorWhite">Белый</string>
+    <string name="question_colorBlack">Черный</string>
+    <string name="question_colorBrown">Коричневый</string>
+    <string name="question_colorOrange">Оранжевый</string>
+    <string name="question_colorPurple">Фиолетовый</string>
+    <string name="correct_toast">Правильно!</string>
+    <string name="incorrect_toast">Не верно!</string>
 </resources>
