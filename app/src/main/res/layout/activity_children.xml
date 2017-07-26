@@ -19,13 +19,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorBlue"
         android:paddingBottom="25dp"
         android:paddingLeft="80dp"
         android:paddingRight="80dp"
-        android:paddingTop="25dp"
-        android:textColor="@color/colorWhite"
-        tools:text="#0000FF"/>
+        android:paddingTop="25dp"/>
+
+    <!--<TextView-->
+    <!--android:id="@+id/color_text_view"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="20dp"-->
+    <!--android:background="@color/colorBlue"-->
+    <!--android:paddingBottom="25dp"-->
+    <!--android:paddingLeft="80dp"-->
+    <!--android:paddingRight="80dp"-->
+    <!--android:paddingTop="25dp"-->
+    <!--android:textColor="@color/colorWhite"-->
+    <!--tools:text="#0000FF"/>-->
 
     <Button
         android:id="@+id/first_answer_button"
