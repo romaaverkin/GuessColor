@@ -6,11 +6,11 @@ package com.bignerdranch.android.guesscolor;
 
 public class Question {
     private int mTextResId;
-    private String mAnswerToQuestion;
+    private int mColorResId;
 
-    public Question(int textResId, String answerToQuestion) {
+    public Question(int textResId, int colorResId) {
         mTextResId = textResId;
-        mAnswerToQuestion = answerToQuestion;
+        mColorResId = colorResId;
     }
 
     public int getTextResId() {
@@ -21,11 +21,11 @@ public class Question {
         mTextResId = textResId;
     }
 
-    public String getAnswerToQuestion() {
-        return mAnswerToQuestion;
+    public int getColorResId() {
+        return mColorResId;
     }
 
-    public void setAnswerToQuestion(String answerToQuestion) {
-        mAnswerToQuestion = answerToQuestion;
+    public void setColorResId(int colorResId) {
+        mColorResId = colorResId;
     }
 }
