@@ -10,6 +10,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class ChildrenActivity extends AppCompatActivity {
@@ -42,6 +43,27 @@ public class ChildrenActivity extends AppCompatActivity {
         mColorTextView.setBackgroundColor(getResources().getColor(question));
     }
 
+    private void shuffleButtons() {
+        HashSet<Integer> answerHashSet = new HashSet<>();
+        int answerWhatColor = mQuestionBank[mCurrentIndex].getTextResId();
+        answerHashSet.add(answerWhatColor);
+        while (answerHashSet.size() <= 3) {
+            int rand = (int) Math.floor(Math.random() * mQuestionBank.length);
+            answerHashSet.add(rand);
+        }
+//        Collections.shuffle((List<Integer>) answerHashSet);
+        mMFirstAnswerButton = (Button) findViewById(R.id.first_answer_button);
+        mMFirstAnswerButton.setText(answerWhatColor);
+//        Integer[] myArray = {};
+//        myArray = answerHashSet.toArray(new Integer[answerHashSet.size()]);
+//        mMSecondAnswerButton = (Button) findViewById(R.id.second_answer_button);
+//        mMSecondAnswerButton.setText((mQuestionBank[myArray[1]]).getTextResId());
+//        mThreeAnswerButton = (Button) findViewById(R.id.three_answer_button);
+//        mThreeAnswerButton.setText((mQuestionBank[myArray[2]]).getTextResId());
+//        mFourthAnswerButton = (Button) findViewById(R.id.fourth_answer_button);
+//        mFourthAnswerButton.setText((mQuestionBank[myArray[3]]).getTextResId());
+    }
+
     private void checkAnswer(String userSelectColor) {
         int answerWhatColor = mQuestionBank[mCurrentIndex].getTextResId();
         int messageResId = 0;
@@ -66,6 +88,7 @@ public class ChildrenActivity extends AppCompatActivity {
         updateQuestion();
 
         mMFirstAnswerButton = (Button) findViewById(R.id.first_answer_button);
+        shuffleButtons();
         mMFirstAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -40,8 +40,7 @@
     <Button
         android:id="@+id/first_answer_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/question_colorRed"/>
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/second_answer_button"
