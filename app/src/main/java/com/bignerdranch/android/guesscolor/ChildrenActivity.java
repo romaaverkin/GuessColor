@@ -37,6 +37,11 @@ public class ChildrenActivity extends AppCompatActivity {
 
     private int mCurrentIndex = 0;
 
+    private void updateQuestion() {
+        int question = mQuestionBank[mCurrentIndex].getColorResId();
+        mColorTextView.setBackgroundColor(getResources().getColor(question));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +50,8 @@ public class ChildrenActivity extends AppCompatActivity {
         Collections.shuffle(mQuestionBankShuffle);
         mQuestionBank = mQuestionBankShuffle.toArray(mQuestionBank);
 
-
         mColorTextView = (TextView) findViewById(R.id.color_text_view);
-        int question = mQuestionBank[mCurrentIndex].getColorResId();
-//        mColorTextView.setText(question);
-        mColorTextView.setBackgroundColor(getResources().getColor(question));
+        updateQuestion();
 
         mMFirstAnswerButton = (Button) findViewById(R.id.first_answer_button);
         mMFirstAnswerButton.setOnClickListener(new View.OnClickListener() {
@@ -110,8 +112,7 @@ public class ChildrenActivity extends AppCompatActivity {
                 } else {
                     mCurrentIndex--;
                 }
-                int question = mQuestionBank[mCurrentIndex].getColorResId();
-                mColorTextView.setBackgroundColor(getResources().getColor(question));
+                updateQuestion();
             }
         });
     }
