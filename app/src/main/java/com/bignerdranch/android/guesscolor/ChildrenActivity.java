@@ -42,6 +42,18 @@ public class ChildrenActivity extends AppCompatActivity {
         mColorTextView.setBackgroundColor(getResources().getColor(question));
     }
 
+    private void checkAnswer(String userSelectColor) {
+        int answerWhatColor = mQuestionBank[mCurrentIndex].getTextResId();
+        int messageResId = 0;
+        if (userSelectColor == getResources().getText(answerWhatColor)) {
+            messageResId = R.string.correct_toast;
+        } else {
+            messageResId = R.string.incorrect_toast;
+        }
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
+                .show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +69,7 @@ public class ChildrenActivity extends AppCompatActivity {
         mMFirstAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ChildrenActivity.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
+                checkAnswer(((Button) view).getText().toString());
             }
         });
 
@@ -67,9 +77,7 @@ public class ChildrenActivity extends AppCompatActivity {
         mMSecondAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ChildrenActivity.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
+                checkAnswer(((Button) view).getText().toString());
             }
         });
 
@@ -77,9 +85,7 @@ public class ChildrenActivity extends AppCompatActivity {
         mThreeAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ChildrenActivity.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
+                checkAnswer(((Button) view).getText().toString());
             }
         });
 
@@ -87,9 +93,7 @@ public class ChildrenActivity extends AppCompatActivity {
         mFourthAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ChildrenActivity.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
+                checkAnswer(((Button) view).getText().toString());
             }
         });
 
