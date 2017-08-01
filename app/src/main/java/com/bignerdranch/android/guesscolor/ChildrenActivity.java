@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -49,19 +48,25 @@ public class ChildrenActivity extends AppCompatActivity {
         answerHashSet.add(answerWhatColor);
         while (answerHashSet.size() <= 3) {
             int rand = (int) Math.floor(Math.random() * mQuestionBank.length);
-            answerHashSet.add(rand);
+            int answerWhatColorRandom = mQuestionBank[rand].getTextResId();
+            answerHashSet.add(answerWhatColorRandom);
         }
-//        Collections.shuffle((List<Integer>) answerHashSet);
+        Integer[] myArrayColorsForButton = {};
+        myArrayColorsForButton = answerHashSet.toArray(new Integer[answerHashSet.size()]);
+
+        //Перемешиваем кнопки
+        List<Integer> mArrayShuffle = Arrays.asList(myArrayColorsForButton);
+        Collections.shuffle(mArrayShuffle);
+        myArrayColorsForButton = mArrayShuffle.toArray(myArrayColorsForButton);
+
         mMFirstAnswerButton = (Button) findViewById(R.id.first_answer_button);
-        mMFirstAnswerButton.setText(answerWhatColor);
-//        Integer[] myArray = {};
-//        myArray = answerHashSet.toArray(new Integer[answerHashSet.size()]);
-//        mMSecondAnswerButton = (Button) findViewById(R.id.second_answer_button);
-//        mMSecondAnswerButton.setText((mQuestionBank[myArray[1]]).getTextResId());
-//        mThreeAnswerButton = (Button) findViewById(R.id.three_answer_button);
-//        mThreeAnswerButton.setText((mQuestionBank[myArray[2]]).getTextResId());
-//        mFourthAnswerButton = (Button) findViewById(R.id.fourth_answer_button);
-//        mFourthAnswerButton.setText((mQuestionBank[myArray[3]]).getTextResId());
+        mMFirstAnswerButton.setText(myArrayColorsForButton[0]);
+        mMSecondAnswerButton = (Button) findViewById(R.id.second_answer_button);
+        mMSecondAnswerButton.setText(myArrayColorsForButton[1]);
+        mThreeAnswerButton = (Button) findViewById(R.id.three_answer_button);
+        mThreeAnswerButton.setText(myArrayColorsForButton[2]);
+        mFourthAnswerButton = (Button) findViewById(R.id.fourth_answer_button);
+        mFourthAnswerButton.setText(myArrayColorsForButton[3]);
     }
 
     private void checkAnswer(String userSelectColor) {
@@ -86,9 +91,8 @@ public class ChildrenActivity extends AppCompatActivity {
 
         mColorTextView = (TextView) findViewById(R.id.color_text_view);
         updateQuestion();
-
-        mMFirstAnswerButton = (Button) findViewById(R.id.first_answer_button);
         shuffleButtons();
+        mMFirstAnswerButton = (Button) findViewById(R.id.first_answer_button);
         mMFirstAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,8 +129,8 @@ public class ChildrenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                int question = mQuestionBank[mCurrentIndex].getColorResId();
-                mColorTextView.setBackgroundColor(getResources().getColor(question));
+                updateQuestion();
+                shuffleButtons();
             }
         });
 
@@ -140,6 +144,7 @@ public class ChildrenActivity extends AppCompatActivity {
                     mCurrentIndex--;
                 }
                 updateQuestion();
+                shuffleButtons();
             }
         });
     }
