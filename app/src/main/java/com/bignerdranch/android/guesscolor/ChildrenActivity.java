@@ -2,6 +2,7 @@ package com.bignerdranch.android.guesscolor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ChildrenActivity extends AppCompatActivity {
+    private static final String TAG = "ChildrenActivity";
+    private static final String KEY_INDEX = "index";
+    private Button mNewGameButton;
     private Button mMFirstAnswerButton;
     private Button mMSecondAnswerButton;
     private Button mThreeAnswerButton;
@@ -21,7 +25,7 @@ public class ChildrenActivity extends AppCompatActivity {
     private Button mNextButton;
     private TextView mColorTextView;
 
-    private Question[] mQuestionBank = new Question[]{
+    private static Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_colorRed, R.color.colorRed),
             new Question(R.string.question_colorGreen, R.color.colorGreen),
             new Question(R.string.question_colorBlue, R.color.colorBlue),
@@ -33,7 +37,13 @@ public class ChildrenActivity extends AppCompatActivity {
             new Question(R.string.question_colorPink, R.color.colorPink),
     };
 
-    private List<Question> mQuestionBankShuffle = Arrays.asList(mQuestionBank);
+    private static List<Question> mQuestionBankShuffle = Arrays.asList(mQuestionBank);
+
+    static {
+        //Перемешиваем массив
+        Collections.shuffle(mQuestionBankShuffle);
+        mQuestionBank = mQuestionBankShuffle.toArray(mQuestionBank);
+    }
 
     private int mCurrentIndex = 0;
 
@@ -82,21 +92,60 @@ public class ChildrenActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume() called");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_children);
-        //Перемешиваем массив
-        Collections.shuffle(mQuestionBankShuffle);
-        mQuestionBank = mQuestionBankShuffle.toArray(mQuestionBank);
+//        //Перемешиваем массив
+//        Collections.shuffle(mQuestionBankShuffle);
+//        mQuestionBank = mQuestionBankShuffle.toArray(mQuestionBank);
 
         mColorTextView = (TextView) findViewById(R.id.color_text_view);
-        updateQuestion();
-        shuffleButtons();
         mMFirstAnswerButton = (Button) findViewById(R.id.first_answer_button);
         mMFirstAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkAnswer(((Button) view).getText().toString());
+            }
+        });
+
+        mNewGameButton = (Button) findViewById(R.id.new_game_button);
+        mNewGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.shuffle(mQuestionBankShuffle);
+                mQuestionBank = mQuestionBankShuffle.toArray(mQuestionBank);
+                onDestroy();
+                onCreate(null);
             }
         });
 
@@ -147,5 +196,18 @@ public class ChildrenActivity extends AppCompatActivity {
                 shuffleButtons();
             }
         });
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
+        updateQuestion();
+        shuffleButtons();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 }

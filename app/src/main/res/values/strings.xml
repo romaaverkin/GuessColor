@@ -3,6 +3,7 @@
     <string name="select_mode">Выбери режим</string>
     <string name="childrens_mode">Детский</string>
     <string name="adult_mode">Взрослый</string>
+    <string name="new_game">Новая игра</string>
     <string name="question">Какой это цвет?</string>
     <string name="question_colorRed">Красный</string>
     <string name="question_colorGreen">Зеленый</string>
